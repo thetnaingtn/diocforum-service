@@ -16,7 +16,7 @@ func init() {
 	var err error
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
 	defer cancel()
-	Client, err = mongo.NewClient(options.Client().ApplyURI(os.Getenv("DB_URL")))
+	Client, err = mongo.NewClient(options.Client().ApplyURI(os.Getenv("DATABASE_URL")))
 	if err != nil {
 		log.Fatal(err)
 	}

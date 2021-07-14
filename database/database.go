@@ -2,8 +2,11 @@ package database
 
 import (
 	"context"
+	_ "diocforum/cert"
+	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -17,7 +20,8 @@ func init() {
 	var err error
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
 	defer cancel()
-	Client, err = mongo.NewClient(options.Client().ApplyURI(os.Getenv("DATABASE_URL")))
+	// Client, err = mongo.NewClient(options.Client().ApplyURI(fmt.Sprintf(os.Getenv("DATABASE_URL"), filepath.Join("ca-certificate.crt"))))
+	Client, err = mongo.NewClient(options.Client().ApplyURI(fmt.Sprintf(os.Getenv("DATABASE_URL"), filepath.Join("cert/ca-certificate.crt"))))
 	if err != nil {
 		log.Fatal(err)
 	}

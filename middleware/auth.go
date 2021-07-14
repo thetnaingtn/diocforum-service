@@ -3,6 +3,7 @@ package middleware
 import (
 	"bytes"
 	"context"
+	"diocforum/user"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"

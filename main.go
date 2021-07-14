@@ -15,6 +15,6 @@ func main() {
 	post.SetupRoute(apiBase)
 	auth.SetUpRoute(apiBase)
 
-	log.Println("Server listening at :5000")
+	log.Println("Server listening at :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

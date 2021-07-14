@@ -6,6 +6,7 @@ import (
 	"os"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -25,4 +26,6 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Println(os.Getenv("DATABASE_URL"))
+	log.Println(Client.ListDatabaseNames(ctx, bson.M{}))
 }

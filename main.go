@@ -1,15 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"diocforum/auth"
+	"diocforum/post"
 	"log"
 	"net/http"
 )
 
+var apiBase = "/api"
+
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println("/ path")
-	})
+	post.SetupRoute(apiBase)
+	auth.SetUpRoute(apiBase)
 
 	log.Fatal(http.ListenAndServe(":5000", nil))
 }
